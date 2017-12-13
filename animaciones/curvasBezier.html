@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>curvas bezier</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            perspective: 200px;
+            /* x defecto es center 
+            perspective-origin: center; */
+            /* desde arriba hace abajo */
+            /* perspective-origin: top;*/
+            /* desde abajo hacia arriba*/
+            /*perspective-origin: bottom;*/
+            /* desde la izquierda a derecha */
+            /*perspective-origin: left;*/
+            /* desde la derecha a izquierda */
+            /*perspective-origin: right;*/
+            /*perspective-origin: top left;*/
+            /*perspective-origin: top right;*/
+            /* perspective-origin: bottom left;*/
+            /*perspective-origin: bottom right;*/
+        }
+        
+        .container {
+            width: 100%;
+            border: 1px solid red;
+        }
+        
+        .container:hover .cuadrado {
+            animation-play-state: paused;
+        }
+        
+        .cuadrado {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: #7dc900;
+            /*transition: all .3s;*/
+            animation-name: cuadrado;
+            animation-duration: 1s;
+            animation-delay: 1s;
+            /* animation-delay: despues de que tiempo inicia la animation*/
+            /*animation-iteration-count: 3;*/
+            animation-iteration-count: infinite;
+            /* cuantas veces queremos que se repita la animacion, puede ser infinita*/
+            /*animation-timing-function: ease;*/
+            /* steps(numero): es por pasos*/
+            /*animation-timing-function: steps(10);*/
+            animation-timing-function: cubic-bezier(-1, 1, 1, -1);
+            /*animation-timing-function: ease-in;*/
+            /*animation-timing-function: ease-in-out;*/
+            /*animation-timing-function: ease-out;*/
+            /*animation-timing-function: linear;*/
+            /*animation-direction: reverse;*/
+            animation-direction: alternate;
+            /* animation-fill-mode: forwards;*/
+            /* animation-fill-mode: termina en el ultimo valor en ese caso opacity: 0*/
+            position: relative;
+        }
+        
+        @keyframes cuadrado {
+            0% {
+                /*opacity: 1;*/
+                left: 0%;
+            }
+            100% {
+                /*opacity: 0;*/
+                left: calc(100% - 240px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cuadrado">
+            Hola mundo
+        </div>
+    </div>
+</body>
+
+</html>
