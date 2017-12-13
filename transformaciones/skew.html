@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scale</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            perspective: 200px;
+            /* x defecto es center 
+            perspective-origin: center; */
+            /* desde arriba hace abajo */
+            /* perspective-origin: top;*/
+            /* desde abajo hacia arriba*/
+            /*perspective-origin: bottom;*/
+            /* desde la izquierda a derecha */
+            /*perspective-origin: left;*/
+            /* desde la derecha a izquierda */
+            /*perspective-origin: right;*/
+            /*perspective-origin: top left;*/
+            /*perspective-origin: top right;*/
+            /* perspective-origin: bottom left;*/
+            /*perspective-origin: bottom right;*/
+        }
+        
+        .container {
+            border: 1px solid red;
+        }
+        
+        .container:hover .cuadrado {
+            transform: skew(45deg);
+            transform: skew(25deg, 25deg);
+        }
+        
+        .cuadrado {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            background-color: #7dc900;
+            transition: all .3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cuadrado">
+            Hola mundo
+        </div>
+    </div>
+</body>
+
+</html>
