@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>element.animate</title>
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 600px;
+            border: 1px solid red;
+        }
+        
+        .pelota {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        
+        .buttons {
+            border-top: thin solid black;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: .6rem .8rem .8rem;
+            margin: 5px;
+            text-align: center;
+            background-color: #3fd865;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: inset 0 -.2em rgba(0, 0, 0, .2);
+            transition: .2s;
+            outline: none;
+            will-change: transform;
+        }
+        
+        .btn:active {
+            transform: scale(.9);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="pelota" class="pelota">
+        </div>
+        <div class="buttons">
+            <div id="play" class="btn">play</div>
+            <div id="pause" class="btn">pause</div>
+            <div id="stop" class="btn">stop</div>
+            <div id="reverse" class="btn">reversa</div>
+        </div>
+    </div>
+
+    <script>
+        const pelota = document.getElementById('pelota');
+
+        // element.animate(keyframes = [{},{}], option = {})
+        const animation = pelota.animate([
+            // from
+            {
+                transform: 'translateX(0)'
+            },
+            //to
+            {
+                transform: 'translateX(500px)'
+            }
+        ], {
+            duration: 1000,
+            delay: 1000,
+            direction: 'normal',
+            easing: 'linear',
+            iterations: Infinity, // en lugar de colocar 'infinite' colocamos Infinite
+            fill: 'forwards', // para que mi animacion quede con sus estilos finales
+            iterationStart: .5, // la animacion va a comenzar desde 205px su rango es (0-1)
+            //endDelay: 5000, // tardara 5s para comenzar la sgte animacion
+        });
+
+        const playButton = document.getElementById('play'),
+            pauseButton = document.getElementById('pause'),
+            stopButton = document.getElementById('stop'),
+            reverseButton = document.getElementById('reverse');
+
+        playButton.addEventListener('click', (event) => {
+            animation.play();
+        });
+        pauseButton.addEventListener('click', (event) => {
+            animation.pause();
+        });
+        stopButton.addEventListener('click', (event) => {
+            animation.cancel();
+        });
+        reverseButton.addEventListener('click', (event) => {
+            animation.reverse();
+        });
+    </script>
+</body>
+
+</html>
